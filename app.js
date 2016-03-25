@@ -60,7 +60,7 @@ controller.on('reaction_added', function(bot, ev) {
         enoughYays = false,
         noNays = true;
 
-    if (text === undefined) return;
+    if (text === undefined || typeof text !== 'string') return;
 
     text = stripLeadingAndTrailingQuotes(text);
 
