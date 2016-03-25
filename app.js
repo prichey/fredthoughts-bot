@@ -81,6 +81,11 @@ controller.on('reaction_added', function(bot, ev) {
       } else {
         bot.reply(message, 'Attempting to tweet: "' + text + '"');
         console.log('attempting to tweet:', text);
+        twitter.post('statuses/update', {status: text},  function(error, tweet, response){
+          if(error) throw error;
+          console.log(tweet);  // Tweet body.
+          console.log(response);  // Raw response object.
+        });
       }
     }
   });
