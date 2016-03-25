@@ -53,10 +53,14 @@ controller.on('reaction_added', function(bot, ev) {
     timestamp: ev.item.ts,
     channel: ev.item.channel,
   }, function(_, json) {
+    if (!!!json[json.type] || !!!json[json.type].reactions || !!!json[json.type].text) return;
+
     var reactions = json[json.type].reactions,
         text = json[json.type].text,
         enoughYays = false,
         noNays = true;
+
+    if (text === undefined) return;
 
     text = stripLeadingAndTrailingQuotes(text);
 
