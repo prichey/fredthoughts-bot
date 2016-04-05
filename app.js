@@ -26,7 +26,7 @@ function stripLeadingAndTrailingQuotes(text) {
   var strippedText = text.trim();
   strippedText = strippedText.replace(/^"(.*)"$/, '$1'); // trim leading and trailing '"'
   strippedText = strippedText.replace(/^'(.*)'$/, '$1'); // trim leading and trailing "'"
-  return text;
+  return strippedText;
 }
 
 bot.startRTM(function(err,bot,payload) {
@@ -63,6 +63,7 @@ controller.on('reaction_added', function(bot, ev) {
     if (text === undefined || typeof text !== 'string') return;
 
     text = stripLeadingAndTrailingQuotes(text);
+    console.log('stripped text', text);
 
     for (var i = 0; i < reactions.length; i++) {
       if (reactions[i].name == YAY_EMOJI) {
@@ -81,9 +82,9 @@ controller.on('reaction_added', function(bot, ev) {
     if (enoughYays && noNays) {
       if (text.length > 140) {
         console.log('too long, cannot tweet');
-        bot.reply(message, 'Sorry, cannot tweet (too long): "' + text + '"');
+        bot.say('Sorry, cannot tweet (too long): "' + text + '"');
       } else {
-        bot.reply(message, 'Attempting to tweet: "' + text + '"');
+        bot.say('Attempting to tweet: "' + text + '"');
         console.log('attempting to tweet:', text);
         twitter.post('statuses/update', {status: text},  function(error, tweet, response){
           if(error) throw error;
