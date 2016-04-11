@@ -49,6 +49,8 @@ controller.on('reaction_added', function(bot, ev) {
   //   icon_emoji: ":yes:"
   // })
 
+  if (ev.item.channel !== 'C02QLHF67') return; // not #fred-thoughts
+
   bot.api.reactions.get({
     timestamp: ev.item.ts,
     channel: ev.item.channel,
@@ -97,20 +99,22 @@ controller.on('reaction_added', function(bot, ev) {
 });
 
 controller.on('direct_message', function(bot, message) {
-  if (message.text.length > 140) {
-    console.log('too long, cannot tweet');
-  } else {
-    // only preston ;)
-    if (message.user == 'U02QLHEUB') {
-      twitter.post('statuses/update', {status: message.text},  function(error, tweet, response){
-        if(error) throw error;
-        console.log(tweet);  // Tweet body.
-        console.log(response);  // Raw response object.
-      });
-    } else {
-      bot.reply(message, "How the bloody hell is that a fred thought?");
-    }
-  }
+  bot.reply(message, "How the bloody hell is that a fred thought?");
+
+  // if (message.text.length > 140) {
+  //   console.log('too long, cannot tweet');
+  // } else {
+  //   // only preston ;)
+  //   if (message.user == 'U02QLHEUB') {
+  //     twitter.post('statuses/update', {status: message.text},  function(error, tweet, response){
+  //       if(error) throw error;
+  //       console.log(tweet);  // Tweet body.
+  //       console.log(response);  // Raw response object.
+  //     });
+  //   } else {
+  //     bot.reply(message, "How the bloody hell is that a fred thought?");
+  //   }
+  // }
 });
 
 controller.on('direct_mention', function(bot, message) {
@@ -118,4 +122,4 @@ controller.on('direct_mention', function(bot, message) {
 });
 
 // shhh when debug is on
-// controller.on('tick', function() { return; });
+controller.on('tick', function() { return; });
