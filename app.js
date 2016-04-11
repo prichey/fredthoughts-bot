@@ -35,6 +35,13 @@ bot.startRTM(function(err,bot,payload) {
   }
 });
 
+// controller.on('channel_joined', function(bot, ev) {
+//   bot.reply(ev, "Note to self, don’t do this. (I only work in #fredthoughts)");
+//   bot.api.channels.leave({
+//     channel: ev.channel.id
+//   });
+// });
+
 controller.on('reaction_added', function(bot, ev) {
   // copycat (mimics reaction)
   // bot.api.reactions.add({
