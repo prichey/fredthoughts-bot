@@ -122,4 +122,4 @@ controller.on('direct_mention', function(bot, message) {
 });
 
 // shhh when debug is on
-controller.on('tick', function() { return; });
+// controller.on('tick', function() { return; });
