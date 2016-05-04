@@ -19,6 +19,7 @@
   "homepage": "https://github.com/prichey/fredthoughts-bot#readme",
   "dependencies": {
     "botkit": "0.0.7",
+    "cognate": "^0.1.2",
     "dotenv": "^2.0.0",
     "twitter": "^1.2.5"
   },
