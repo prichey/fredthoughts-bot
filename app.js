@@ -3,7 +3,9 @@ var Botkit = require('botkit');
 var controller = Botkit.slackbot({
   debug: false
 });
+
 var cognate = require('cognate');
+var emoji = require('node-emoji');
 
 var MIN_THUMBS_UP = 3;
 var YAY_EMOJI = '+1';
@@ -74,6 +76,7 @@ controller.on('reaction_added', function(bot, ev) {
 
     text = cognate.replace(text); // swap special chars like smart quotes
     text = stripLeadingAndTrailingQuotes(text);
+    text = emoji.emojify(text); // e.g. :coffee: => ☕
 
     for (var i = 0; i < reactions.length; i++) {
       if (reactions[i].name == YAY_EMOJI) {
