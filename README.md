@@ -6,7 +6,7 @@ Will tweet a Fred thought if it gets 3 or more yays (👍) and no nays (👎).
 
 ### Installation
 
-Add a `.env` file at the root with the following credentials:
+* Add a `.env` file at the root with the following credentials:
 
 ```
 SLACKBOT_TOKEN=''
@@ -16,4 +16,7 @@ TWITTER_ACCESS_TOKEN_KEY=''
 TWITTER_ACCESS_TOKEN_SECRET=''
 ```
 
-For anyone at 40D, these can be found in LastPass under `Fredthoughts Slackbot Credentials`.
+> For anyone at 40D, these can be found in LastPass under `Fredthoughts Slackbot Credentials`.
+
+* `npm install`
+* `npm start`
